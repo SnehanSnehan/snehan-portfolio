@@ -1,3 +1,5 @@
+import Reveal from "../components/Reveal";
+
 const SKILLS = [
   {
     category: "Data & Analysis",
@@ -27,7 +29,7 @@ export default function AboutPage() {
     <main className="mx-auto w-full max-w-3xl flex-1 px-6 py-16">
       <h1 className="font-display text-3xl font-semibold">About</h1>
 
-      <div className="mt-8 flex flex-col gap-4 text-muted">
+      <Reveal className="mt-8 flex flex-col gap-4 text-muted">
         <p>
           I&apos;m an MSc Data Science &amp; Analytics student at Maynooth
           University, originally from Bangalore and now based in Dublin. I
@@ -50,12 +52,12 @@ export default function AboutPage() {
           and ML Engineer roles in Ireland — Dublin, Cork, Limerick, or
           remote/hybrid.
         </p>
-      </div>
+      </Reveal>
 
       <h2 className="mt-14 font-display text-2xl font-semibold">Skills</h2>
       <div className="mt-6 grid gap-8 sm:grid-cols-2">
-        {SKILLS.map((group) => (
-          <div key={group.category}>
+        {SKILLS.map((group, i) => (
+          <Reveal key={group.category} delay={(i % 2) * 0.1}>
             <h3 className="font-mono text-xs uppercase tracking-wide text-muted">
               {group.category}
             </h3>
@@ -69,7 +71,7 @@ export default function AboutPage() {
                 </span>
               ))}
             </div>
-          </div>
+          </Reveal>
         ))}
       </div>
     </main>

@@ -13,7 +13,7 @@ export default function Header() {
       <div className="mx-auto flex max-w-5xl flex-wrap items-center justify-between gap-4 px-6 py-4">
         <Link
           href="/"
-          className="font-display text-lg font-semibold tracking-tight"
+          className="font-display text-2xl font-semibold tracking-tight"
         >
           Snehan
         </Link>

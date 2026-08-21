@@ -17,7 +17,7 @@ export default function Hero() {
     <section className="mx-auto grid w-full max-w-5xl flex-1 items-center gap-10 px-6 py-16 sm:grid-cols-2">
       <div className="flex flex-col items-start gap-6">
         <div>
-          <p className="font-mono text-sm text-accent">Snehan</p>
+          <p className="font-mono text-xl text-accent sm:text-2xl">Snehan</p>
           <h1 className="font-display text-4xl font-semibold leading-tight sm:text-5xl">
             Data Scientist &amp; Analytics Engineer
           </h1>

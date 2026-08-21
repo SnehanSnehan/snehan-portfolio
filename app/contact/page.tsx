@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { EMAIL, GITHUB_URL, LINKEDIN_URL } from "../lib/links";
+import Reveal from "../components/Reveal";
 
 export default function ContactPage() {
   const [name, setName] = useState("");
@@ -26,6 +27,7 @@ export default function ContactPage() {
         is stored anywhere.
       </p>
 
+      <Reveal>
       <form onSubmit={handleSubmit} className="mt-8 flex flex-col gap-5">
         <div className="flex flex-col gap-1.5">
           <label htmlFor="name" className="text-sm text-muted">
@@ -91,8 +93,9 @@ export default function ContactPage() {
           Send message
         </button>
       </form>
+      </Reveal>
 
-      <div className="mt-12 flex flex-wrap gap-6 border-t border-border pt-8 text-sm">
+      <Reveal className="mt-12 flex flex-wrap gap-6 border-t border-border pt-8 text-sm">
         <a
           href={`mailto:${EMAIL}`}
           className="text-muted transition-colors hover:text-foreground"
@@ -115,7 +118,7 @@ export default function ContactPage() {
         >
           LinkedIn
         </a>
-      </div>
+      </Reveal>
     </main>
   );
 }

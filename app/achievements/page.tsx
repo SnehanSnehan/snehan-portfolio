@@ -1,3 +1,5 @@
+import Reveal from "../components/Reveal";
+
 const VOLUNTEERING = [
   {
     role: "Secretary, Kalarava Cultural Club",
@@ -64,28 +66,27 @@ export default function AchievementsPage() {
         Volunteering
       </h2>
       <div className="mt-6 flex flex-col gap-4">
-        {VOLUNTEERING.map((item) => (
-          <div
-            key={item.role}
-            className="rounded-lg border border-border bg-surface p-6"
-          >
-            <div className="flex flex-wrap items-baseline justify-between gap-2">
-              <h3 className="font-display text-base font-semibold">
-                {item.role}
-              </h3>
-              <span className="font-mono text-xs text-muted">
-                {item.dates}
-              </span>
+        {VOLUNTEERING.map((item, i) => (
+          <Reveal key={item.role} delay={i * 0.1}>
+            <div className="rounded-lg border border-border bg-surface p-6">
+              <div className="flex flex-wrap items-baseline justify-between gap-2">
+                <h3 className="font-display text-base font-semibold">
+                  {item.role}
+                </h3>
+                <span className="font-mono text-xs text-muted">
+                  {item.dates}
+                </span>
+              </div>
+              <p className="mt-2 text-sm text-muted">{item.description}</p>
             </div>
-            <p className="mt-2 text-sm text-muted">{item.description}</p>
-          </div>
+          </Reveal>
         ))}
       </div>
 
       <h2 className="mt-12 font-display text-2xl font-semibold">
         Certifications
       </h2>
-      <div className="mt-6 flex flex-col divide-y divide-border rounded-lg border border-border bg-surface">
+      <Reveal className="mt-6 flex flex-col divide-y divide-border rounded-lg border border-border bg-surface">
         {CERTIFICATIONS.map((cert) => (
           <div
             key={cert.name}
@@ -98,10 +99,10 @@ export default function AchievementsPage() {
             <span className="font-mono text-xs text-accent">{cert.date}</span>
           </div>
         ))}
-      </div>
+      </Reveal>
 
       <h2 className="mt-12 font-display text-2xl font-semibold">Hobbies</h2>
-      <div className="mt-6 flex flex-wrap gap-2">
+      <Reveal className="mt-6 flex flex-wrap gap-2">
         {HOBBIES.map((hobby) => (
           <span
             key={hobby}
@@ -110,7 +111,7 @@ export default function AchievementsPage() {
             {hobby}
           </span>
         ))}
-      </div>
+      </Reveal>
     </main>
   );
 }

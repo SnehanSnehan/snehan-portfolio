@@ -1,6 +1,9 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { projects } from "../../lib/projects";
+import Reveal from "../../components/Reveal";
+import ActionReveal from "../../components/ActionReveal";
+import MetricChips from "../../components/MetricChips";
 
 export function generateStaticParams() {
   return projects.map((project) => ({ slug: project.slug }));
@@ -64,47 +67,44 @@ export default async function ProjectDetailPage({
       </div>
 
       <div className="mt-10 flex flex-col gap-8">
-        <section>
-          <h2 className="font-mono text-xs uppercase tracking-wide text-muted">
-            Situation
-          </h2>
-          <p className="mt-2 text-muted">{project.situation}</p>
-        </section>
+        <Reveal>
+          <section>
+            <h2 className="font-mono text-xs uppercase tracking-wide text-muted">
+              Situation
+            </h2>
+            <p className="mt-2 text-muted">{project.situation}</p>
+          </section>
+        </Reveal>
 
-        <section>
-          <h2 className="font-mono text-xs uppercase tracking-wide text-muted">
-            Task
-          </h2>
-          <p className="mt-2 text-muted">{project.task}</p>
-        </section>
+        <Reveal>
+          <section>
+            <h2 className="font-mono text-xs uppercase tracking-wide text-muted">
+              Task
+            </h2>
+            <p className="mt-2 text-muted">{project.task}</p>
+          </section>
+        </Reveal>
 
-        <section className="rounded-lg border border-border bg-surface p-6 sm:p-8">
+        <ActionReveal>
           <h2 className="font-mono text-xs uppercase tracking-wide text-accent">
             Action
           </h2>
           <p className="mt-3 text-base leading-relaxed text-foreground">
             {project.action}
           </p>
-        </section>
+        </ActionReveal>
 
-        <section>
-          <h2 className="font-mono text-xs uppercase tracking-wide text-muted">
-            Result
-          </h2>
-          <p className="mt-2 text-muted">{project.result}</p>
-        </section>
+        <Reveal>
+          <section>
+            <h2 className="font-mono text-xs uppercase tracking-wide text-muted">
+              Result
+            </h2>
+            <p className="mt-2 text-muted">{project.result}</p>
+          </section>
+        </Reveal>
 
         {project.metrics.length > 0 && (
-          <div className="flex flex-wrap gap-2">
-            {project.metrics.map((metric) => (
-              <span
-                key={metric}
-                className="rounded-md bg-background px-3 py-1.5 font-mono text-xs text-accent"
-              >
-                {metric}
-              </span>
-            ))}
-          </div>
+          <MetricChips metrics={project.metrics} />
         )}
       </div>
 
