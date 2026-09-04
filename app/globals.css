@@ -26,3 +26,37 @@ body {
   color: var(--foreground);
   font-family: var(--font-sans), Arial, Helvetica, sans-serif;
 }
+
+/* Animated gradient border, exclusive to the 3 featured project cards on Home. */
+.featured-glow-border {
+  position: relative;
+  border-radius: 0.5rem;
+  padding: 2px;
+  background: linear-gradient(
+    115deg,
+    transparent 10%,
+    var(--accent) 35%,
+    transparent 55%,
+    var(--accent) 85%,
+    transparent
+  );
+  background-size: 300% 300%;
+  animation: featured-glow-shift 6s linear infinite;
+}
+
+@keyframes featured-glow-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 300% 50%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .featured-glow-border {
+    animation: none;
+    background: linear-gradient(115deg, var(--accent), var(--border));
+    background-position: 0% 50%;
+  }
+}

@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { EMAIL, GITHUB_URL, LINKEDIN_URL } from "../lib/links";
 import Reveal from "../components/Reveal";
+import Magnetic from "../components/Magnetic";
 
 export default function ContactPage() {
   const [name, setName] = useState("");
@@ -85,13 +86,15 @@ export default function ContactPage() {
           </span>
         </label>
 
-        <button
-          type="submit"
-          className="mt-2 rounded-md bg-accent px-5 py-2.5 text-sm font-medium text-background transition-opacity hover:opacity-90 disabled:opacity-50"
-          disabled={!consent}
-        >
-          Send message
-        </button>
+        <Magnetic className="mt-2 self-start">
+          <button
+            type="submit"
+            className="rounded-md bg-accent px-5 py-2.5 text-sm font-medium text-background transition-opacity hover:opacity-90 disabled:opacity-50"
+            disabled={!consent}
+          >
+            Send message
+          </button>
+        </Magnetic>
       </form>
       </Reveal>
 

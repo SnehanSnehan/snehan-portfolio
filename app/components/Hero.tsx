@@ -1,5 +1,8 @@
 import Link from "next/link";
 import NetworkGraph from "./NetworkGraph";
+import SpotlightSection from "./SpotlightSection";
+import Magnetic from "./Magnetic";
+import TechStackTags from "./TechStackTags";
 import { GITHUB_URL, LINKEDIN_URL } from "../lib/links";
 
 const TECH_STACK = [
@@ -14,7 +17,7 @@ const TECH_STACK = [
 
 export default function Hero() {
   return (
-    <section className="mx-auto grid w-full max-w-5xl flex-1 items-center gap-10 px-6 py-16 sm:grid-cols-2">
+    <SpotlightSection className="mx-auto grid w-full max-w-5xl flex-1 items-center gap-10 px-6 py-16 sm:grid-cols-2">
       <div className="flex flex-col items-start gap-6">
         <div>
           <p className="font-mono text-xl text-accent sm:text-2xl">Snehan</p>
@@ -29,24 +32,17 @@ export default function Hero() {
           dashboards people can actually act on.
         </p>
 
-        <div className="flex flex-wrap gap-2">
-          {TECH_STACK.map((tech) => (
-            <span
-              key={tech}
-              className="rounded-full border border-border px-3 py-1 font-mono text-xs text-muted"
-            >
-              {tech}
-            </span>
-          ))}
-        </div>
+        <TechStackTags items={TECH_STACK} />
 
         <div className="flex flex-wrap items-center gap-4">
-          <Link
-            href="/projects"
-            className="rounded-md bg-accent px-5 py-2.5 text-sm font-medium text-background transition-opacity hover:opacity-90"
-          >
-            View projects
-          </Link>
+          <Magnetic>
+            <Link
+              href="/projects"
+              className="rounded-md bg-accent px-5 py-2.5 text-sm font-medium text-background transition-opacity hover:opacity-90"
+            >
+              View projects
+            </Link>
+          </Magnetic>
           <a
             href={GITHUB_URL}
             target="_blank"
@@ -69,6 +65,6 @@ export default function Hero() {
       <div className="h-64 w-full sm:h-80">
         <NetworkGraph />
       </div>
-    </section>
+    </SpotlightSection>
   );
 }

@@ -1,20 +1,12 @@
 "use client";
 
 import { motion, useReducedMotion, type Variants } from "framer-motion";
+import CountingChip from "./CountingChip";
 
 const container: Variants = {
   hidden: {},
   visible: {
     transition: { staggerChildren: 0.08 },
-  },
-};
-
-const chip: Variants = {
-  hidden: { opacity: 0, y: 8 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.35, ease: "easeOut" },
   },
 };
 
@@ -45,13 +37,7 @@ export default function MetricChips({ metrics }: { metrics: string[] }) {
       variants={container}
     >
       {metrics.map((metric) => (
-        <motion.span
-          key={metric}
-          variants={chip}
-          className="rounded-md bg-background px-3 py-1.5 font-mono text-xs text-accent"
-        >
-          {metric}
-        </motion.span>
+        <CountingChip key={metric} metric={metric} />
       ))}
     </motion.div>
   );

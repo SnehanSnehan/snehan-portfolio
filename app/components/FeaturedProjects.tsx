@@ -17,7 +17,9 @@ export default function FeaturedProjects() {
       <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {featuredProjects.map((project, i) => (
           <Reveal key={project.slug} delay={i * 0.1}>
-            <ProjectCard project={project} />
+            <div className="featured-glow-border h-full">
+              <ProjectCard project={project} />
+            </div>
           </Reveal>
         ))}
       </div>

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Magnetic from "./Magnetic";
 
 const navLinks = [
   { href: "/", label: "Home" },
@@ -30,12 +31,14 @@ export default function Header() {
           ))}
         </nav>
 
-        <Link
-          href="/contact"
-          className="rounded-md bg-accent px-4 py-2 text-sm font-medium text-background transition-opacity hover:opacity-90"
-        >
-          Get in touch
-        </Link>
+        <Magnetic>
+          <Link
+            href="/contact"
+            className="rounded-md bg-accent px-4 py-2 text-sm font-medium text-background transition-opacity hover:opacity-90"
+          >
+            Get in touch
+          </Link>
+        </Magnetic>
       </div>
     </header>
   );
