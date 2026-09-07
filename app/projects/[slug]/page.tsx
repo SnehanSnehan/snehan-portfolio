@@ -5,6 +5,9 @@ import Reveal from "../../components/Reveal";
 import ActionReveal from "../../components/ActionReveal";
 import MetricChips from "../../components/MetricChips";
 import CardPattern from "../../components/patterns";
+import DetailBanner, {
+  hasDetailBanner,
+} from "../../components/banners/DetailBanner";
 
 export function generateStaticParams() {
   return projects.map((project) => ({ slug: project.slug }));
@@ -32,7 +35,11 @@ export default async function ProjectDetailPage({
       </Link>
 
       <div className="relative mt-6 overflow-hidden rounded-lg border border-border bg-surface p-6 sm:p-8">
-        <CardPattern slug={project.slug} />
+        {hasDetailBanner(project.slug) ? (
+          <DetailBanner slug={project.slug} />
+        ) : (
+          <CardPattern slug={project.slug} />
+        )}
 
         <h1 className="font-display text-3xl font-semibold sm:text-4xl">
           {project.title}
