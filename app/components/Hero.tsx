@@ -1,8 +1,9 @@
 import Link from "next/link";
-import NetworkGraph from "./NetworkGraph";
+import HeroVisual from "./HeroVisual";
 import SpotlightSection from "./SpotlightSection";
 import Magnetic from "./Magnetic";
 import TechStackTags from "./TechStackTags";
+import ParticleHeadline from "./ParticleHeadline";
 import { GITHUB_URL, LINKEDIN_URL } from "../lib/links";
 
 const TECH_STACK = [
@@ -21,9 +22,10 @@ export default function Hero() {
       <div className="flex flex-col items-start gap-6">
         <div>
           <p className="font-mono text-xl text-accent sm:text-2xl">Snehan</p>
-          <h1 className="font-display text-4xl font-semibold leading-tight sm:text-5xl">
-            Data Scientist &amp; Analytics Engineer
-          </h1>
+          <ParticleHeadline
+            text="Data Scientist & Analytics Engineer"
+            className="font-display text-4xl font-semibold leading-tight sm:text-5xl"
+          />
         </div>
 
         <p className="max-w-md text-muted">
@@ -63,7 +65,7 @@ export default function Hero() {
       </div>
 
       <div className="h-64 w-full sm:h-80">
-        <NetworkGraph />
+        <HeroVisual />
       </div>
     </SpotlightSection>
   );

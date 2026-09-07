@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { projects } from "../../lib/projects";
-import Reveal from "../../components/Reveal";
+import StagedReveal from "../../components/StagedReveal";
 import ActionReveal from "../../components/ActionReveal";
 import MetricChips from "../../components/MetricChips";
 import CardPattern from "../../components/patterns";
@@ -79,23 +79,23 @@ export default async function ProjectDetailPage({
       </div>
 
       <div className="mt-10 flex flex-col gap-8">
-        <Reveal>
+        <StagedReveal direction="left">
           <section>
             <h2 className="font-mono text-xs uppercase tracking-wide text-muted">
               Situation
             </h2>
             <p className="mt-2 text-muted">{project.situation}</p>
           </section>
-        </Reveal>
+        </StagedReveal>
 
-        <Reveal>
+        <StagedReveal direction="right">
           <section>
             <h2 className="font-mono text-xs uppercase tracking-wide text-muted">
               Task
             </h2>
             <p className="mt-2 text-muted">{project.task}</p>
           </section>
-        </Reveal>
+        </StagedReveal>
 
         <ActionReveal>
           <h2 className="font-mono text-xs uppercase tracking-wide text-accent">
@@ -106,14 +106,14 @@ export default async function ProjectDetailPage({
           </p>
         </ActionReveal>
 
-        <Reveal>
+        <StagedReveal direction="left">
           <section>
             <h2 className="font-mono text-xs uppercase tracking-wide text-muted">
               Result
             </h2>
             <p className="mt-2 text-muted">{project.result}</p>
           </section>
-        </Reveal>
+        </StagedReveal>
 
         {project.metrics.length > 0 && (
           <MetricChips metrics={project.metrics} />
