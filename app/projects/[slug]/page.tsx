@@ -4,6 +4,7 @@ import { projects } from "../../lib/projects";
 import Reveal from "../../components/Reveal";
 import ActionReveal from "../../components/ActionReveal";
 import MetricChips from "../../components/MetricChips";
+import CardPattern from "../../components/patterns";
 
 export function generateStaticParams() {
   return projects.map((project) => ({ slug: project.slug }));
@@ -30,40 +31,44 @@ export default async function ProjectDetailPage({
         ← Back to all projects
       </Link>
 
-      <h1 className="mt-6 font-display text-3xl font-semibold sm:text-4xl">
-        {project.title}
-      </h1>
+      <div className="relative mt-6 overflow-hidden rounded-lg border border-border bg-surface p-6 sm:p-8">
+        <CardPattern slug={project.slug} />
 
-      <div className="mt-4 flex flex-wrap gap-2">
-        {project.tags.map((tag) => (
-          <span
-            key={tag}
-            className="rounded-full border border-border px-2.5 py-0.5 font-mono text-xs text-muted"
-          >
-            {tag}
-          </span>
-        ))}
-      </div>
+        <h1 className="font-display text-3xl font-semibold sm:text-4xl">
+          {project.title}
+        </h1>
 
-      <div className="mt-4 flex flex-wrap gap-4">
-        <a
-          href={project.githubUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-sm font-medium text-accent hover:opacity-80"
-        >
-          Source code →
-        </a>
-        {project.demoUrl && (
+        <div className="mt-4 flex flex-wrap gap-2">
+          {project.tags.map((tag) => (
+            <span
+              key={tag}
+              className="rounded-full border border-border px-2.5 py-0.5 font-mono text-xs text-muted"
+            >
+              {tag}
+            </span>
+          ))}
+        </div>
+
+        <div className="mt-4 flex flex-wrap gap-4">
           <a
-            href={project.demoUrl}
+            href={project.githubUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="text-sm font-medium text-accent hover:opacity-80"
           >
-            Live demo →
+            Source code →
           </a>
-        )}
+          {project.demoUrl && (
+            <a
+              href={project.demoUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm font-medium text-accent hover:opacity-80"
+            >
+              Live demo →
+            </a>
+          )}
+        </div>
       </div>
 
       <div className="mt-10 flex flex-col gap-8">
