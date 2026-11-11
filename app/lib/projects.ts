@@ -40,7 +40,7 @@ export const projects: Project[] = [
     githubUrl: "https://github.com/SnehanSnehan/ecommerce-churn-analysis",
     situation:
       "E-commerce businesses often don't know which customers are about to churn until it's too late — most analysis is reactive rather than predictive.",
-    task: "Analyze real transaction data from a Brazilian e-commerce marketplace to understand churn drivers and produce concrete, ROI-backed retention recommendations, not just descriptive statistics.",
+    task: "Analyze real transaction data from a Brazilian e-commerce marketplace to understand churn drivers and produce concrete, data-backed retention recommendations, not just descriptive statistics.",
     action:
       "I worked with 99,441 real transactions across 93,358 customers (Olist/Kaggle dataset, Sep 2016–Oct 2018). I built an RFM (Recency, Frequency, Monetary) segmentation model to split customers into 5 distinct groups — Champions, Loyal, Potential Loyalists, At Risk, and Lost — then trained a logistic regression model to identify customers at risk of churning before they actually left. I translated the statistical output into a 3-tier business strategy (immediate/medium-term/long-term actions) with recommended actions for each tier.",
     result:

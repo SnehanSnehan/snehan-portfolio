@@ -65,7 +65,7 @@ before (full STAR case study, Action-weighted).
 - **Situation:** E-commerce businesses often don't know which customers are about
   to churn until it's too late — most analysis is reactive rather than predictive.
 - **Task:** Analyze real transaction data from a Brazilian e-commerce marketplace
-  to understand churn drivers and produce concrete, ROI-backed retention
+  to understand churn drivers and produce concrete, data-backed retention
   recommendations, not just descriptive statistics.
 - **Action:** I worked with 99,441 real transactions across 93,358 customers
   (Olist/Kaggle dataset, Sep 2016–Oct 2018). I built an RFM (Recency, Frequency,
