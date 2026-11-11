@@ -42,14 +42,13 @@ export const projects: Project[] = [
       "E-commerce businesses often don't know which customers are about to churn until it's too late — most analysis is reactive rather than predictive.",
     task: "Analyze real transaction data from a Brazilian e-commerce marketplace to understand churn drivers and produce concrete, ROI-backed retention recommendations, not just descriptive statistics.",
     action:
-      "I worked with 99,441 real transactions across 96,096 customers (Olist/Kaggle dataset, Sep 2016–Oct 2018). I built an RFM (Recency, Frequency, Monetary) segmentation model to split customers into 5 distinct groups — Champions, Loyal, Potential Loyalists, At Risk, and Lost — then trained a logistic regression model to identify customers at risk of churning before they actually left. I translated the statistical output into a 3-tier business strategy (immediate/medium-term/long-term actions) with projected ROI for each.",
+      "I worked with 99,441 real transactions across 93,358 customers (Olist/Kaggle dataset, Sep 2016–Oct 2018). I built an RFM (Recency, Frequency, Monetary) segmentation model to split customers into 5 distinct groups — Champions, Loyal, Potential Loyalists, At Risk, and Lost — then trained a logistic regression model to identify customers at risk of churning before they actually left. I translated the statistical output into a 3-tier business strategy (immediate/medium-term/long-term actions) with recommended actions for each tier.",
     result:
-      "Identified a 70.7% baseline churn rate and 28,726 \"at-risk\" customers for immediate re-engagement, with a projected 9.5x ROI and R$619K+ revenue opportunity from converting just 10% of them to loyal customers.",
+      "Identified a 70.7% baseline churn rate and 12,298 \"at-risk\" customers for immediate re-engagement. Illustrative scenario: if 10% of At Risk customers (about 1,230) moved up to Loyal-level spend (R$215 vs R$69 average), that is roughly R$180K in revenue.",
     metrics: [
       "99,441 transactions analyzed",
       "5 customer segments identified",
       "70.7% churn rate diagnosed",
-      "9.5x projected ROI on retention campaign",
     ],
   },
   {

@@ -4,6 +4,7 @@ import { projects } from "../../lib/projects";
 import StagedReveal from "../../components/StagedReveal";
 import ActionReveal from "../../components/ActionReveal";
 import MetricChips from "../../components/MetricChips";
+import ChurnSegmentExplorer from "../../components/graphics/ChurnSegmentExplorer";
 import CardPattern from "../../components/patterns";
 import DetailBanner, {
   hasDetailBanner,
@@ -117,6 +118,23 @@ export default async function ProjectDetailPage({
 
         {project.metrics.length > 0 && (
           <MetricChips metrics={project.metrics} />
+        )}
+
+        {slug === "ecommerce-churn-analysis" && (
+          <section aria-labelledby="explore-data">
+            <h2
+              id="explore-data"
+              className="font-mono text-xs uppercase tracking-wide text-muted"
+            >
+              Explore the data
+            </h2>
+            <div className="mt-4">
+              <ChurnSegmentExplorer />
+            </div>
+            <p className="mt-3 font-mono text-xs text-muted">
+              Source: project README
+            </p>
+          </section>
         )}
       </div>
 
