@@ -4,6 +4,7 @@ import { projects } from "../../lib/projects";
 import StagedReveal from "../../components/StagedReveal";
 import ActionReveal from "../../components/ActionReveal";
 import MetricChips from "../../components/MetricChips";
+import TrackerArchitectureFlow from "../../components/graphics/TrackerArchitectureFlow";
 import ChurnSegmentExplorer from "../../components/graphics/ChurnSegmentExplorer";
 import CardPattern from "../../components/patterns";
 import DetailBanner, {
@@ -118,6 +119,23 @@ export default async function ProjectDetailPage({
 
         {project.metrics.length > 0 && (
           <MetricChips metrics={project.metrics} />
+        )}
+
+        {slug === "graduate-job-internship-tracker" && (
+          <section aria-labelledby="explore-architecture">
+            <h2
+              id="explore-architecture"
+              className="font-mono text-xs uppercase tracking-wide text-muted"
+            >
+              Explore the architecture
+            </h2>
+            <div className="mt-4">
+              <TrackerArchitectureFlow />
+            </div>
+            <p className="mt-3 font-mono text-xs text-muted">
+              Source: project README and repo config (nginx.conf, docker-compose.yml)
+            </p>
+          </section>
         )}
 
         {slug === "ecommerce-churn-analysis" && (
