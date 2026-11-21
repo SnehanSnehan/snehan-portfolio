@@ -150,7 +150,7 @@ export default async function ProjectDetailPage({
               <ChurnSegmentExplorer />
             </div>
             <p className="mt-3 font-mono text-xs text-muted">
-              Source: project README
+              Source: customer_summary_with_segments.csv (ecommerce-churn-analysis repo)
             </p>
           </section>
         )}
