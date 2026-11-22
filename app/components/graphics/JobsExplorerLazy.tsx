@@ -17,7 +17,7 @@ export const JOBS_STATIC_LINE =
 function Placeholder() {
   return (
     // Same measured heights as JobsExplorer's root, so nothing moves when it loads.
-    <div className="min-h-[85.625rem] min-[400px]:min-h-[75.375rem] min-[480px]:min-h-[66.75rem] min-[760px]:min-h-[59.625rem]">
+    <div className="min-h-[77.75rem] min-[400px]:min-h-[67.5rem] min-[480px]:min-h-[61.25rem] min-[760px]:min-h-[56.5rem]">
       <p className="text-sm text-muted">{JOBS_STATIC_LINE}</p>
     </div>
   );

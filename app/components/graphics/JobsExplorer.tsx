@@ -22,8 +22,6 @@ const ROLES = Object.keys(JOBS.roles);
 const fmt = (n: number) => n.toLocaleString("en-US");
 const AXIS = [0, 25, 50, 75, 100];
 
-const CHIPS = ["12,217 postings analysed", "SQL in 46% of postings", "SQL in 67% of data analyst postings"];
-
 export default function JobsExplorer() {
   const reduce = useReducedMotion();
   const [role, setRoleState] = useState<string>("All postings");
@@ -58,8 +56,8 @@ export default function JobsExplorer() {
 
   return (
     // Min-heights = tallest role at each width (labels wrap differently per role), measured:
-    // 1370px @375, 1206 @414, 1068 @480, ~1060 @600-700, 954 @768+. Same values as the placeholder.
-    <div className="flex min-h-[85.625rem] flex-col gap-5 min-[400px]:min-h-[75.375rem] min-[480px]:min-h-[66.75rem] min-[760px]:min-h-[59.625rem]">
+    // 1244px @375, 1080 @414, 980 @480, ~964-972 @600-700, 904 @800. Same values as the placeholder.
+    <div className="flex min-h-[77.75rem] flex-col gap-5 min-[400px]:min-h-[67.5rem] min-[480px]:min-h-[61.25rem] min-[760px]:min-h-[56.5rem]">
       <h3 className="font-mono text-xs uppercase tracking-wide text-muted">Skills employers ask for</h3>
 
       <div role="group" aria-label="Choose a role" className="flex flex-wrap gap-2">
@@ -186,14 +184,6 @@ export default function JobsExplorer() {
         Source: 12,217 LinkedIn job postings (about 79% US locations, 89% Mid-senior level, so this
         reflects experienced-role requirements). Shares are distinct postings mentioning each skill.
       </p>
-
-      <div className="flex flex-wrap gap-2">
-        {CHIPS.map((c) => (
-          <span key={c} className="rounded-full border border-border px-3 py-1 text-sm text-foreground">
-            {c}
-          </span>
-        ))}
-      </div>
 
       {/* hidden accessible table: all five roles */}
       <div className="sr-only">
