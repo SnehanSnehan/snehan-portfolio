@@ -40,11 +40,30 @@ const fmt = (n: number) => n.toLocaleString("en-US");
 const byId = Object.fromEntries(KARNATAKA_DISTRICTS.map((d) => [d.id, d]));
 const MAX_COUNT = Math.max(...KARNATAKA_DISTRICTS.map((d) => d.count ?? 0));
 
+// Bangalore is tiny and ringed by Bangalore Rural, Ramanagara and Kolar, so its 44px+
+// tap circle overlaps them. Inside the circle, a tap/hover goes to whichever of
+// Bangalore and the district actually under the pointer has the nearer label point,
+// so every neighbour stays selectable and Bangalore still gets a generous target.
+function pickDistrict(e: { clientX: number; clientY: number; currentTarget: Element }) {
+  const svg = (e.currentTarget as SVGElement).ownerSVGElement as SVGSVGElement;
+  const rect = svg.getBoundingClientRect();
+  const scale = rect.width / VB_W;
+  const x = VB_X + (e.clientX - rect.left) / scale;
+  const y = (e.clientY - rect.top) / scale;
+  const under = document
+    .elementsFromPoint(e.clientX, e.clientY)
+    .map((el) => el.closest("g[data-district]")?.getAttribute("data-district"))
+    .find(Boolean) as string | undefined;
+  if (!under || under === BANGALORE_ID) return BANGALORE_ID;
+  const b = byId[BANGALORE_ID];
+  const u = byId[under];
+  return Math.hypot(x - b.cx, y - b.cy) <= Math.hypot(x - u.cx, y - u.cy) ? BANGALORE_ID : under;
+}
+
 export default function KarnatakaDistrictMap() {
   const reduce = !!useReducedMotion();
   const [pinned, setPinned] = useState<string>(BANGALORE_ID);
   const [hovered, setHovered] = useState<string | null>(null);
-  const [focusRing, setFocusRing] = useState<string | null>(null);
 
   const activeId = hovered ?? pinned;
   const active = byId[activeId];
@@ -76,12 +95,12 @@ export default function KarnatakaDistrictMap() {
 
           {ordered.map((d) => {
             const isBlr = d.id === BANGALORE_ID;
-            const isActive = activeId === d.id;
             const delay = (d.cls - 1) * 0.15 + (isBlr ? 0.15 : 0);
             return (
               <g
                 key={d.id}
                 role="button"
+                data-district={d.id}
                 tabIndex={0}
                 aria-label={`${d.name}, ${
                   d.count != null
@@ -92,14 +111,8 @@ export default function KarnatakaDistrictMap() {
                 className="cursor-pointer outline-none"
                 onMouseEnter={() => setHovered(d.id)}
                 onMouseLeave={() => setHovered(null)}
-                onFocus={(e) => {
-                  setHovered(d.id);
-                  if (e.currentTarget.matches(":focus-visible")) setFocusRing(d.id);
-                }}
-                onBlur={() => {
-                  setHovered(null);
-                  setFocusRing(null);
-                }}
+                onFocus={() => setHovered(d.id)}
+                onBlur={() => setHovered(null)}
                 onClick={() => setPinned(d.id)}
                 onKeyDown={(e) => {
                   if (e.key === "Enter" || e.key === " ") {
@@ -111,15 +124,37 @@ export default function KarnatakaDistrictMap() {
                 <motion.path
                   d={d.d}
                   fill={CLASS_FILL[d.cls]}
-                  stroke={isActive ? "var(--foreground)" : "var(--surface)"}
-                  strokeWidth={isActive ? 2 : 1.2}
+                  stroke="var(--surface)"
+                  strokeWidth={1.2}
                   strokeLinejoin="round"
                   filter={isBlr ? "url(#blr-glow)" : undefined}
                   initial={reduce ? false : { opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={reduce ? { duration: 0 } : { duration: 0.5, delay }}
                 />
-                {isBlr && <circle cx={d.cx} cy={d.cy} r={TAP_RADIUS} fill="transparent" />}
+              </g>
+            );
+          })}
+
+          <circle
+            cx={blr.cx}
+            cy={blr.cy}
+            r={TAP_RADIUS}
+            fill="transparent"
+            aria-hidden="true"
+            className="cursor-pointer"
+            onPointerMove={(e) => setHovered(pickDistrict(e))}
+            onPointerLeave={() => setHovered(null)}
+            onClick={(e) => setPinned(pickDistrict(e))}
+          />
+
+          {LABELS.map((l) => {
+            const d = byId[l.id];
+            return (
+              <g key={l.id} pointerEvents="none">
+                <line x1={-8} y1={l.y} x2={d.cx} y2={d.cy} stroke="var(--surface)" strokeWidth={3.5} opacity={0.7} />
+                <line x1={-8} y1={l.y} x2={d.cx} y2={d.cy} stroke="var(--foreground)" strokeWidth={1.2} opacity={0.85} />
+                <circle cx={d.cx} cy={d.cy} r={3.5} fill="var(--foreground)" stroke="var(--surface)" strokeWidth={1} />
               </g>
             );
           })}
@@ -149,23 +184,13 @@ export default function KarnatakaDistrictMap() {
             />
           )}
 
-          {LABELS.map((l) => {
-            const d = byId[l.id];
-            return (
-              <g key={l.id} pointerEvents="none">
-                <line x1={-8} y1={l.y} x2={d.cx} y2={d.cy} stroke="var(--surface)" strokeWidth={3.5} opacity={0.7} />
-                <line x1={-8} y1={l.y} x2={d.cx} y2={d.cy} stroke="var(--foreground)" strokeWidth={1.2} opacity={0.85} />
-                <circle cx={d.cx} cy={d.cy} r={3.5} fill="var(--foreground)" stroke="var(--surface)" strokeWidth={1} />
-              </g>
-            );
-          })}
-
-          {focusRing && (
-            <g pointerEvents="none">
-              <path d={byId[focusRing].d} fill="none" stroke="var(--foreground)" strokeWidth={5} strokeLinejoin="round" />
-              <path d={byId[focusRing].d} fill="none" stroke="var(--accent)" strokeWidth={2} strokeLinejoin="round" />
-            </g>
-          )}
+          {/* Active-district outline: one overlay as the LAST element so no neighbour can
+              paint over it. Uses the active district's own path; non-scaling so the
+              2px white line and the amber outer ring stay the same width at any size. */}
+          <g pointerEvents="none" fill="none" strokeLinejoin="round" strokeLinecap="round">
+            <path d={active.d} stroke="var(--accent)" strokeWidth={5} vectorEffect="non-scaling-stroke" />
+            <path d={active.d} stroke="#ffffff" strokeWidth={2} vectorEffect="non-scaling-stroke" />
+          </g>
         </svg>
 
         <div aria-hidden="true" className="pointer-events-none absolute inset-0">
