@@ -114,9 +114,10 @@ note in Section 6 below)
   Seaborn/Matplotlib visualizations of demand trends.
 - **Result:** A working, runnable dashboard (`streamlit run src/app.py`) that
   turns raw job posting data into a personalized, actionable skill roadmap rather
-  than a static report.
-- **Metrics:** role-based skill ranking · personalized gap analysis · interactive
-  Streamlit dashboard
+  than a static report. SQL appears in 46% of the 12,217 postings analysed (67% of
+  data analyst postings).
+- **Metrics:** 12,217 postings analysed · SQL in 46% of postings · SQL in 67% of
+  data analyst postings
 
 ---
 

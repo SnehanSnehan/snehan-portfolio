@@ -64,11 +64,11 @@ export const projects: Project[] = [
     action:
       "I built a Python pipeline (Pandas/NumPy) to clean and process real job posting data, extracting and ranking the top in-demand skills per role. I built an interactive Streamlit dashboard where a user selects a role, sees the top skills ranked by frequency, and gets a personalized skill-gap analysis against their own profile with tailored learning recommendations, backed by Seaborn/Matplotlib visualizations of demand trends.",
     result:
-      "A working, runnable dashboard (`streamlit run src/app.py`) that turns raw job posting data into a personalized, actionable skill roadmap rather than a static report.",
+      "A working, runnable dashboard (`streamlit run src/app.py`) that turns raw job posting data into a personalized, actionable skill roadmap rather than a static report. SQL appears in 46% of the 12,217 postings analysed (67% of data analyst postings).",
     metrics: [
-      "Role-based skill ranking",
-      "Personalized skill-gap analysis",
-      "Interactive Streamlit dashboard",
+      "12,217 postings analysed",
+      "SQL in 46% of postings",
+      "SQL in 67% of data analyst postings",
     ],
   },
   {

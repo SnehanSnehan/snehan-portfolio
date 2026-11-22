@@ -10,6 +10,7 @@ import KarnatakaTourismExplorer from "../../components/graphics/KarnatakaTourism
 import ChurnSegmentExplorer from "../../components/graphics/ChurnSegmentExplorer";
 import IronmanExplorerLazy from "../../components/graphics/IronmanExplorerLazy";
 import HealthExplorerLazy from "../../components/graphics/HealthExplorerLazy";
+import JobsExplorerLazy from "../../components/graphics/JobsExplorerLazy";
 import CardPattern from "../../components/patterns";
 import DetailBanner, {
   hasDetailBanner,
@@ -176,6 +177,20 @@ export default async function ProjectDetailPage({
             <p className="mt-3 font-mono text-xs text-muted">
               Source: World Bank indicators (Kaggle), 2019; project R analysis.
             </p>
+          </section>
+        )}
+
+        {slug === "ai-job-market-intelligence" && (
+          <section aria-labelledby="explore-jobs">
+            <h2
+              id="explore-jobs"
+              className="font-mono text-xs uppercase tracking-wide text-muted"
+            >
+              Explore the data
+            </h2>
+            <div className="mt-4">
+              <JobsExplorerLazy />
+            </div>
           </section>
         )}
 
