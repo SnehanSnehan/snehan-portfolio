@@ -119,7 +119,7 @@ export const projects: Project[] = [
     action:
       "I processed race data from 1,045 athletes, converting race times from HH:MM:SS into numeric hours, extracting age from age-group categories, and reshaping the data for segment-level (swim/bike/run) comparison. Using R (dplyr, ggplot2), I analyzed performance by age group, gender, and race segment, and compared professional athletes against age-groupers.",
     result:
-      "Found the bike segment (~5 hours average) was both the longest and most variable leg of the race, professional athletes finished 3-4 hours faster than age-groupers, and average finish time was 13.5 hours — with a clear but non-deterministic age-performance correlation (some 50+ and 60+ athletes still posted competitive times).",
+      "On average, finishers spent about 1h19 swimming, 6h54 cycling and 4h59 running. Professional athletes finished 3-4 hours faster than age-groupers, and average finish time was 13.5 hours — with a clear but non-deterministic age-performance correlation (some 50+ and 60+ athletes still posted competitive times).",
     metrics: [
       "1,045 athletes analyzed",
       "full 3-segment (swim/bike/run) breakdown",
