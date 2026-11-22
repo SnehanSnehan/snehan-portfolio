@@ -99,9 +99,9 @@ export const projects: Project[] = [
       "Understanding what actually drives population health outcomes globally requires looking past single-country statistics to real cross-country patterns in spending, mortality, and life expectancy.",
     task: "Analyze WHO/World Bank/UN health indicator data (1999–2022) to test specific hypotheses about healthcare spending, life expectancy, and mortality.",
     action:
-      "I cleaned and standardized country-level health data spanning over two decades, handling missing values and building regional groupings for comparison. I used R (dplyr, ggplot2, tidyr) to analyze the relationship between per-capita healthcare spending and life expectancy, regional disparities in child mortality, and the relationship between spending and maternal mortality, producing a full reproducible R Markdown report with supporting visualizations.",
+      "I cleaned and standardized country-level health data spanning over two decades, handling missing values and building regional groupings for comparison. I used R (dplyr, ggplot2, tidyr) to analyze the relationship between healthcare spending (as a share of GDP) and life expectancy, regional disparities in child mortality, and the relationship between spending and maternal mortality, producing a full reproducible R Markdown report with supporting visualizations.",
     result:
-      "Found a strong positive correlation between healthcare spending and life expectancy — with diminishing returns above roughly $2,000 per-capita spend — and a strong inverse correlation between spending and maternal mortality, with Sub-Saharan Africa and South Asia showing the highest child/maternal mortality rates.",
+      "Spending share of GDP and life expectancy are positively but only weakly related (r = 0.29 across 145 countries in 2019). Africa's median under-5 mortality (55.6 per 1,000) is about 9x North America's and 15x Europe's. Africa gained about 9 years of life expectancy between 2000 and 2019 (54.7 to 63.9), and the gap to Europe narrowed from about 21 to about 17 years.",
     metrics: [
       "data spanning 1999–2022",
       "4 major visualizations produced",

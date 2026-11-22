@@ -9,6 +9,7 @@ import KarnatakaMapLazy from "../../components/graphics/KarnatakaMapLazy";
 import KarnatakaTourismExplorer from "../../components/graphics/KarnatakaTourismExplorer";
 import ChurnSegmentExplorer from "../../components/graphics/ChurnSegmentExplorer";
 import IronmanExplorerLazy from "../../components/graphics/IronmanExplorerLazy";
+import HealthExplorerLazy from "../../components/graphics/HealthExplorerLazy";
 import CardPattern from "../../components/patterns";
 import DetailBanner, {
   hasDetailBanner,
@@ -157,6 +158,23 @@ export default async function ProjectDetailPage({
             </div>
             <p className="mt-3 font-mono text-xs text-muted">
               Source: project README
+            </p>
+          </section>
+        )}
+
+        {slug === "global-health-indicators-analysis" && (
+          <section aria-labelledby="explore-health">
+            <h2
+              id="explore-health"
+              className="font-mono text-xs uppercase tracking-wide text-muted"
+            >
+              Explore the data
+            </h2>
+            <div className="mt-4">
+              <HealthExplorerLazy />
+            </div>
+            <p className="mt-3 font-mono text-xs text-muted">
+              Source: World Bank indicators (Kaggle), 2019; project R analysis.
             </p>
           </section>
         )}
