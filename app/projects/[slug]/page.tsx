@@ -9,6 +9,7 @@ import KarnatakaMapLazy from "../../components/graphics/KarnatakaMapLazy";
 import KarnatakaTourismExplorer from "../../components/graphics/KarnatakaTourismExplorer";
 import ChurnSegmentExplorer from "../../components/graphics/ChurnSegmentExplorer";
 import IronmanExplorerLazy from "../../components/graphics/IronmanExplorerLazy";
+import JobsExplorerLazy from "../../components/graphics/JobsExplorerLazy";
 import CardPattern from "../../components/patterns";
 import DetailBanner, {
   hasDetailBanner,
@@ -158,6 +159,20 @@ export default async function ProjectDetailPage({
             <p className="mt-3 font-mono text-xs text-muted">
               Source: project README
             </p>
+          </section>
+        )}
+
+        {slug === "ai-job-market-intelligence" && (
+          <section aria-labelledby="explore-jobs">
+            <h2
+              id="explore-jobs"
+              className="font-mono text-xs uppercase tracking-wide text-muted"
+            >
+              Explore the data
+            </h2>
+            <div className="mt-4">
+              <JobsExplorerLazy />
+            </div>
           </section>
         )}
 

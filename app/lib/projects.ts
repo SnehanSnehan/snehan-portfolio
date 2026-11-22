@@ -66,9 +66,9 @@ export const projects: Project[] = [
     result:
       "A working, runnable dashboard (`streamlit run src/app.py`) that turns raw job posting data into a personalized, actionable skill roadmap rather than a static report.",
     metrics: [
-      "Role-based skill ranking",
-      "Personalized skill-gap analysis",
-      "Interactive Streamlit dashboard",
+      "12,217 postings analysed",
+      "SQL in 46% of postings",
+      "SQL in 67% of data analyst postings",
     ],
   },
   {
