@@ -13,15 +13,6 @@ export const SITE_LOCALE = "en_IE";
 // Absolute URL for a site path ("/about" -> "https://…/about").
 export const absoluteUrl = (path: string) => new URL(path, SITE_URL).toString();
 
-// Trim to a word boundary so a description never ends mid-word.
-export function trimToWord(text: string, max = 155): string {
-  const clean = text.replace(/\s+/g, " ").trim();
-  if (clean.length <= max) return clean;
-  const cut = clean.slice(0, max - 1);
-  const atSpace = cut.lastIndexOf(" ");
-  return cut.slice(0, atSpace > 0 ? atSpace : cut.length).replace(/[\s,;:—–-]+$/, "") + "…";
-}
-
 // Preview image routes (app/opengraph-image.tsx, app/twitter-image.tsx). A page that
 // defines its own `openGraph` / `twitter` replaces the root layout's, which drops the
 // file-convention image, so each page references the image explicitly.

@@ -4,7 +4,8 @@ import { loadOgFonts, OG_COLORS } from "./lib/ogFonts";
 export const size = { width: 180, height: 180 };
 export const contentType = "image/png";
 
-// Same mark as app/icon.tsx, with rounded corners.
+// Same mark as app/icon.tsx, as a full-bleed square: navy to every edge, no rounded
+// corners and no transparency (iOS applies its own corner mask to touch icons).
 export default async function AppleIcon() {
   const fonts = await loadOgFonts();
   return new ImageResponse(
@@ -18,10 +19,9 @@ export default async function AppleIcon() {
           justifyContent: "center",
           background: OG_COLORS.background,
           color: OG_COLORS.accent,
-          borderRadius: 40,
           fontFamily: "Space Grotesk",
           fontWeight: 700,
-          fontSize: 150,
+          fontSize: 130,
           lineHeight: 1,
         }}
       >

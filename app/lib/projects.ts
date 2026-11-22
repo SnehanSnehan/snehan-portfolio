@@ -4,6 +4,9 @@ export type Project = {
   tags: string[];
   githubUrl: string;
   demoUrl?: string;
+  // Hand-written <meta> / Open Graph description: <= 155 characters, no truncation,
+  // and only claims and figures that appear on this project's page.
+  metaDescription: string;
   situation: string;
   task: string;
   action: string;
@@ -19,6 +22,8 @@ export const projects: Project[] = [
     title: "Graduate Job & Internship Tracker",
     tags: ["MERN", "Docker", "JWT Auth", "REST APIs"],
     githubUrl: "https://github.com/SnehanSnehan/graduate-job-internship-tracker",
+    metaDescription:
+      "A multi-user job and internship application tracker with JWT auth, 2 external API integrations and 5 design patterns. Deployable with docker compose up.",
     situation:
       "A team project (3-person) for Maynooth University's Internet Solutions Engineering module — university students often lose track of job/internship applications, deadlines, and statuses across multiple platforms.",
     task: "Build a full-stack web app with real authentication, multi-user support, external API integration, and a containerized deployment — meeting academic requirements for layered architecture and design patterns.",
@@ -38,6 +43,8 @@ export const projects: Project[] = [
     title: "E-Commerce Customer Churn Analysis",
     tags: ["R", "RFM Segmentation", "Predictive Modeling"],
     githubUrl: "https://github.com/SnehanSnehan/ecommerce-churn-analysis",
+    metaDescription:
+      "Analysis of 99,441 e-commerce transactions found a 70.7% baseline churn rate and 12,298 at-risk customers, across 5 RFM customer segments.",
     situation:
       "E-commerce businesses often don't know which customers are about to churn until it's too late — most analysis is reactive rather than predictive.",
     task: "Analyze real transaction data from a Brazilian e-commerce marketplace to understand churn drivers and produce concrete, data-backed retention recommendations, not just descriptive statistics.",
@@ -58,6 +65,8 @@ export const projects: Project[] = [
     githubUrl: "https://github.com/SnehanSnehan/ai_job_market_intelligence",
     // No live demo link — not yet deployed. Do not add one until confirmed deployed
     // (e.g. Streamlit Community Cloud), per PROJECT_DATA_UPDATE.md Section 6.
+    metaDescription:
+      "SQL appears in 46% of the 12,217 job postings analysed (67% of data analyst postings). A Streamlit dashboard adds a personalized skill-gap analysis.",
     situation:
       "Job postings for AI/data roles list dozens of tools and skills, but it's hard to tell which ones actually matter versus which are boilerplate.",
     task: "Build a system to extract and rank in-demand skills from real job postings, then let a user compare their own skill set against actual market demand.",
@@ -76,6 +85,8 @@ export const projects: Project[] = [
     title: "Tourism Infrastructure Spatial Analysis",
     tags: ["PostgreSQL", "PostGIS", "QGIS", "Spatial SQL"],
     githubUrl: "https://github.com/SnehanSnehan/karnataka-tourism-spatial-analysis",
+    metaDescription:
+      "Bangalore holds 4,937 of the 8,044 tourism facilities in the dataset, 14x Mysore's. Spatial SQL and PostGIS analysis of Karnataka's districts.",
     situation:
       "University project (CS621C – Spatial Databases, Maynooth University) examining how tourism infrastructure is actually distributed across Karnataka's districts, versus how it's assumed to be distributed.",
     task: "Quantify infrastructure concentration and accessibility using real geospatial data at district scale, in a way that could support an actual investment/policy argument.",
@@ -95,6 +106,8 @@ export const projects: Project[] = [
     title: "Global Health Indicators Analysis",
     tags: ["R", "ggplot2", "Statistical Analysis"],
     githubUrl: "https://github.com/SnehanSnehan/global-health-indicators-analysis",
+    metaDescription:
+      "Spending share of GDP and life expectancy are positively but only weakly related (r = 0.29 across 145 countries in 2019), using World Bank indicators.",
     situation:
       "Understanding what actually drives population health outcomes globally requires looking past single-country statistics to real cross-country patterns in spending, mortality, and life expectancy.",
     task: "Analyze WHO/World Bank/UN health indicator data (1999–2022) to test specific hypotheses about healthcare spending, life expectancy, and mortality.",
@@ -113,6 +126,8 @@ export const projects: Project[] = [
     title: "Ironman Ireland 2022: Performance Analysis",
     tags: ["R", "Statistical Analysis", "Sports Analytics"],
     githubUrl: "https://github.com/SnehanSnehan/ironman-ireland-2022-analysis",
+    metaDescription:
+      "What drives finishing time at Ironman Ireland 2022? On average, finishers spent about 1h19 swimming, 6h54 cycling and 4h59 running.",
     situation:
       "Endurance race performance is often discussed anecdotally — this project set out to quantify what actually drives finishing time using real competition data.",
     task: "Analyze race data from Ironman Ireland 2022 to identify which factors (age, gender, race segment) most affect overall performance.",

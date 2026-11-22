@@ -5,7 +5,7 @@ import { pageMetadata } from "../lib/site";
 export const metadata = pageMetadata({
   title: "Contact",
   description:
-    "Send a message directly from this form — nothing is stored anywhere beyond delivering it to me. Email, GitHub and LinkedIn links are also on this page.",
+    "Get in touch with Snehan by email, GitHub or LinkedIn, or use the contact form.",
   path: "/contact",
 });
 

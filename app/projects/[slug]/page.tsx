@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { pageMetadata, trimToWord } from "../../lib/site";
+import { pageMetadata } from "../../lib/site";
 import { projects } from "../../lib/projects";
 import StagedReveal from "../../components/StagedReveal";
 import ActionReveal from "../../components/ActionReveal";
@@ -32,7 +32,7 @@ export async function generateMetadata({
   if (!project) return {};
   return pageMetadata({
     title: project.title,
-    description: trimToWord(project.situation, 155),
+    description: project.metaDescription,
     path: `/projects/${project.slug}`,
   });
 }
