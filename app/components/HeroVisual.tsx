@@ -20,9 +20,10 @@ export default function HeroVisual() {
     ).matches;
     const isDesktop = window.matchMedia("(min-width: 768px)").matches;
 
-    if (!reducedMotion && isDesktop) {
-      setMode("3d");
-    }
+    if (reducedMotion || !isDesktop) return;
+    // deferred by one tick so state isn't set synchronously inside the effect
+    const t = setTimeout(() => setMode("3d"), 0);
+    return () => clearTimeout(t);
   }, []);
 
   if (mode === "3d") {

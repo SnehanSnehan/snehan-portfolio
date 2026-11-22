@@ -38,15 +38,19 @@ function parseMetric(text: string) {
 export default function CountingChip({ metric }: { metric: string }) {
   const shouldReduceMotion = useReducedMotion();
   const parsed = parseMetric(metric);
-  const [display, setDisplay] = useState(parsed ? parsed.prefix + "0" + parsed.suffix : metric);
+  // Text shown while counting up; null until the chip first scrolls into view.
+  const [animated, setAnimated] = useState<string | null>(null);
+  // No number to count, or reduced motion: show the final text directly
+  // (derived, rather than set from inside the effect).
+  const display =
+    !parsed || shouldReduceMotion
+      ? metric
+      : (animated ?? parsed.prefix + "0" + parsed.suffix);
   const ref = useRef<HTMLSpanElement>(null);
   const hasAnimated = useRef(false);
 
   useEffect(() => {
-    if (!parsed || shouldReduceMotion) {
-      setDisplay(metric);
-      return;
-    }
+    if (!parsed || shouldReduceMotion) return;
 
     const el = ref.current;
     if (!el) return;
@@ -64,7 +68,7 @@ export default function CountingChip({ metric }: { metric: string }) {
                 maximumFractionDigits: parsed.decimals,
                 useGrouping: parsed.useGrouping,
               });
-              setDisplay(parsed.prefix + formatted + parsed.suffix);
+              setAnimated(parsed.prefix + formatted + parsed.suffix);
             },
           });
           return () => controls.stop();

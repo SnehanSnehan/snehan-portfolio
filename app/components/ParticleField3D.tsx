@@ -7,6 +7,19 @@ import * as THREE from "three";
 const COUNT = 500;
 const SPREAD = 6;
 
+// Small seeded PRNG (mulberry32): the particle field is identical on every
+// render and every visit, and no Math.random call happens during render.
+function mulberry32(seed: number) {
+  let a = seed >>> 0;
+  return () => {
+    a = (a + 0x6d2b79f5) >>> 0;
+    let t = a;
+    t = Math.imul(t ^ (t >>> 15), t | 1);
+    t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+}
+
 function Particles() {
   const pointsRef = useRef<THREE.Points>(null!);
 
@@ -16,17 +29,18 @@ function Particles() {
     const positions = new Float32Array(COUNT * 3);
     const basePositions = new Float32Array(COUNT * 3);
     const phases = new Float32Array(COUNT);
+    const rand = mulberry32(20240601);
     for (let i = 0; i < COUNT; i++) {
-      const x = (Math.random() - 0.5) * SPREAD * 2;
-      const y = (Math.random() - 0.5) * SPREAD * 2;
-      const z = (Math.random() - 0.5) * SPREAD;
+      const x = (rand() - 0.5) * SPREAD * 2;
+      const y = (rand() - 0.5) * SPREAD * 2;
+      const z = (rand() - 0.5) * SPREAD;
       positions[i * 3] = x;
       positions[i * 3 + 1] = y;
       positions[i * 3 + 2] = z;
       basePositions[i * 3] = x;
       basePositions[i * 3 + 1] = y;
       basePositions[i * 3 + 2] = z;
-      phases[i] = Math.random() * Math.PI * 2;
+      phases[i] = rand() * Math.PI * 2;
     }
     return { positions, basePositions, phases };
   }, []);
