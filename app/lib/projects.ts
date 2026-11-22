@@ -86,7 +86,7 @@ export const projects: Project[] = [
     tags: ["PostgreSQL", "PostGIS", "QGIS", "Spatial SQL"],
     githubUrl: "https://github.com/SnehanSnehan/karnataka-tourism-spatial-analysis",
     metaDescription:
-      "Bangalore holds 4,937 of the 8,044 tourism facilities in the dataset, 14x Mysore's. Spatial SQL and PostGIS analysis of Karnataka's districts.",
+      "Bangalore holds 4,937 of the 8,044 tourism facilities in the dataset, 14.5x Mysore's. Spatial SQL and PostGIS analysis of Karnataka's districts.",
     situation:
       "University project (CS621C – Spatial Databases, Maynooth University) examining how tourism infrastructure is actually distributed across Karnataka's districts, versus how it's assumed to be distributed.",
     task: "Quantify infrastructure concentration and accessibility using real geospatial data at district scale, in a way that could support an actual investment/policy argument.",
@@ -98,7 +98,7 @@ export const projects: Project[] = [
       "8,000+ facilities analyzed",
       "30 districts covered",
       "4,937 of 8,044 facilities in Bangalore",
-      "Bangalore has 14x Mysore's facilities",
+      "Bangalore has 14.5x Mysore's facilities",
     ],
   },
   {

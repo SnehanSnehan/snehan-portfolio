@@ -7,7 +7,7 @@ export const SITE_URL = "https://snehan-portfolio-six.vercel.app";
 export const SITE_NAME = "Snehan";
 export const SITE_TITLE = "Snehan — Data Scientist & Analytics Engineer";
 export const SITE_DESCRIPTION =
-  "Portfolio of Snehan, MSc Data Science & Analytics — job market intelligence, spatial analysis, and explainable AI projects.";
+  "Portfolio of Snehan, MSc Data Science & Analytics: a job tracker web app, customer churn and job market analysis, and spatial, health and sports projects.";
 export const SITE_LOCALE = "en_IE";
 
 // Absolute URL for a site path ("/about" -> "https://…/about").

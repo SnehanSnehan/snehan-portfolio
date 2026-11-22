@@ -145,7 +145,7 @@ note in Section 6 below)
   surfaced that rural heritage sites can be 20+ km from the nearest hotel, versus
   200-500m in urban areas.
 - **Metrics:** 8,000+ facilities analyzed · 30 districts covered · 4,937 of 8,044
-  facilities in Bangalore · Bangalore has 14x Mysore's facilities
+  facilities in Bangalore · Bangalore has 14.5x Mysore's facilities
 
 ---
 
