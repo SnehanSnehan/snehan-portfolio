@@ -5,6 +5,8 @@ import StagedReveal from "../../components/StagedReveal";
 import ActionReveal from "../../components/ActionReveal";
 import MetricChips from "../../components/MetricChips";
 import TrackerArchitectureFlow from "../../components/graphics/TrackerArchitectureFlow";
+import KarnatakaMapLazy from "../../components/graphics/KarnatakaMapLazy";
+import KarnatakaTourismExplorer from "../../components/graphics/KarnatakaTourismExplorer";
 import ChurnSegmentExplorer from "../../components/graphics/ChurnSegmentExplorer";
 import CardPattern from "../../components/patterns";
 import DetailBanner, {
@@ -134,6 +136,26 @@ export default async function ProjectDetailPage({
             </div>
             <p className="mt-3 font-mono text-xs text-muted">
               Source: project README and repo config (nginx.conf, docker-compose.yml)
+            </p>
+          </section>
+        )}
+
+        {slug === "tourism-spatial-analysis" && (
+          <section aria-labelledby="explore-tourism">
+            <h2
+              id="explore-tourism"
+              className="font-mono text-xs uppercase tracking-wide text-muted"
+            >
+              Explore the data
+            </h2>
+            <div className="mt-4">
+              <KarnatakaMapLazy />
+            </div>
+            <div className="mt-10">
+              <KarnatakaTourismExplorer />
+            </div>
+            <p className="mt-3 font-mono text-xs text-muted">
+              Source: project README
             </p>
           </section>
         )}

@@ -139,13 +139,12 @@ note in Section 6 below)
   meter-based distance) — plus materialized views and GIST indexes for query
   performance. I built choropleth maps in QGIS to visualize concentration by
   district.
-- **Result:** Found that Bangalore alone holds 63% of Karnataka's tourism
-  infrastructure (4,937 facilities) — 14x more than the second-ranked district —
-  while rural districts like Haveri have only 12 facilities total. Also surfaced
-  that rural heritage sites can be 20+ km from the nearest hotel, versus 200-500m
-  in urban areas.
-- **Metrics:** 8,000+ facilities analyzed · 30 districts covered · 63% urban
-  concentration found · 14x facility gap between top 2 districts
+- **Result:** Found that Bangalore alone holds 4,937 of the 8,044 facilities in the
+  dataset, while rural districts like Haveri have only 12 facilities total. Also
+  surfaced that rural heritage sites can be 20+ km from the nearest hotel, versus
+  200-500m in urban areas.
+- **Metrics:** 8,000+ facilities analyzed · 30 districts covered · 4,937 of 8,044
+  facilities in Bangalore · Bangalore has 14x Mysore's facilities
 
 ---
 
