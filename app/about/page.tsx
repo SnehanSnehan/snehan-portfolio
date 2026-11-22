@@ -1,4 +1,12 @@
 import Reveal from "../components/Reveal";
+import { pageMetadata } from "../lib/site";
+
+export const metadata = pageMetadata({
+  title: "About",
+  description:
+    "MSc Data Science & Analytics student at Maynooth University, originally from Bangalore and now based in Dublin. Skills: Python, R, SQL, Power BI, PostGIS.",
+  path: "/about",
+});
 
 const SKILLS = [
   {

@@ -1,6 +1,14 @@
 import { projects } from "../lib/projects";
 import ProjectCard from "../components/ProjectCard";
 import StagedReveal from "../components/StagedReveal";
+import { pageMetadata } from "../lib/site";
+
+export const metadata = pageMetadata({
+  title: "Projects",
+  description:
+    "6 projects, each a full STAR case study: graduate job tracker, customer churn, job market intelligence, tourism spatial analysis, global health and Ironman.",
+  path: "/projects",
+});
 
 export default function ProjectsPage() {
   return (

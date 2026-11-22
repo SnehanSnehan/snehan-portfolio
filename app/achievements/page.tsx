@@ -1,4 +1,12 @@
 import Reveal from "../components/Reveal";
+import { pageMetadata } from "../lib/site";
+
+export const metadata = pageMetadata({
+  title: "Achievements & Hobbies",
+  description:
+    "Volunteering, certifications and hobbies, including the Oracle Cloud Infrastructure 2025 Certified Data Science Professional and Indian classical dance.",
+  path: "/achievements",
+});
 
 const VOLUNTEERING = [
   {
