@@ -36,8 +36,8 @@ export default function KarnatakaMapLazy() {
     const el = ref.current;
     if (!el) return;
     if (!("IntersectionObserver" in window)) {
-      setShow(true);
-      return;
+      const t = setTimeout(() => setShow(true), 0);
+      return () => clearTimeout(t);
     }
     const io = new IntersectionObserver(
       ([e]) => {

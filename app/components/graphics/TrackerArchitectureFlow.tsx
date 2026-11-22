@@ -102,22 +102,22 @@ export default function TrackerArchitectureFlow() {
   const current = step >= 0 ? STEPS[step] : null;
   const last = STEPS.length - 1;
 
+  // "Playing" ends by itself once the last step is reached; derived rather than
+  // set from inside the effect.
+  const isPlaying = playing && step < last;
+
   useEffect(() => {
-    if (!playing) return;
-    if (step >= last) {
-      setPlaying(false);
-      return;
-    }
+    if (!isPlaying) return;
     const t = setTimeout(() => setStep((s) => s + 1), STEP_MS);
     return () => clearTimeout(t);
-  }, [playing, step, last]);
+  }, [isPlaying, step]);
 
   function onFollow() {
     if (reduce) {
       setStep((s) => (s >= last ? 0 : s + 1));
       return;
     }
-    if (playing) return;
+    if (isPlaying) return;
     setStep(0);
     setPlaying(true);
   }
@@ -128,7 +128,7 @@ export default function TrackerArchitectureFlow() {
       : step >= last
         ? "Start over"
         : "Next step"
-    : playing
+    : isPlaying
       ? "Following..."
       : step >= last
         ? "Replay"
@@ -271,7 +271,7 @@ export default function TrackerArchitectureFlow() {
           <button
             type="button"
             onClick={onFollow}
-            aria-disabled={playing}
+            aria-disabled={isPlaying}
             className="min-h-11 rounded-md bg-accent px-4 py-2 text-sm font-medium text-background transition-opacity hover:opacity-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent aria-disabled:opacity-60"
           >
             {buttonLabel}
